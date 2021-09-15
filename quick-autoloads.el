@@ -69,7 +69,7 @@
     (dolist (src srcs)
       (unless (or (string-match-p src "-pkg\\.el")
                   (string-match-p src "-autoload\\.el"))
-        (puthash index src ql--lmap)
+        (puthash index (file-name-sans-extension src) ql--lmap)
         (ql-collect-autoloads src index))
       (setq index (1+ index)))
     (ql--write-autoloads tofile)))
